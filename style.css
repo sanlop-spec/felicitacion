@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #ffafcc; /* Fondo rosa del video */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden; /* Para los corazones */
+}
+
+/* Contenedor de corazones de fondo (JS lo rellena) */
+#hearts-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Contenedor principal centrado */
+.main-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+/* La Carta Fija y Estática */
+.birthday-card {
+    background: white;
+    width: 90%; /* Responsivo para móvil */
+    max-width: 380px; /* Tamaño máximo */
+    height: auto; /* Altura automática basada en contenido */
+    border-radius: 30px;
+    padding: 2.5rem 2rem;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    border: 5px solid #c2185b; /* Borde rosa oscuro */
+    box-sizing: border-box; /* Para que el padding no sume al ancho */
+    text-align: center;
+    /* QUITAMOS ANIMACIONES DE ENTRADA */
+}
+
+/* Interior controlado de la carta */
+.card-interior {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* Espaciado automático entre elementos */
+}
+
+/* Marco interno para la foto (Controla el tamaño de foto.jpg) */
+.photo-frame {
+    width: 180px; /* Tamaño controlado de la foto */
+    height: 180px;
+    border-radius: 50%;
+    border: 4px solid #c2185b; /* Borde rosa oscuro */
+    overflow: hidden; /* Corta la imagen si es muy grande */
+    box-shadow: 0 8px 20px rgba(194, 24, 91, 0.3);
+    margin-bottom: 0.5rem;
+}
+
+.birthday-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ajusta la foto sin deformarla */
+    display: block;
+}
+
+/* Iconos superiores */
+.cake-icon {
+    font-size: 50px;
+    margin-bottom: 0.5rem;
+    animation: bounce 2s infinite; /* Solo el pastel rebota */
+}
+
+/* Título Principal */
+.birthday-title {
+    font-weight: 600;
+    font-size: 2.4rem;
+    margin: 0;
+    color: #c2185b;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px #ffafcc, 0 0 20px #ffafcc, 0 0 30px #c2185b;
+}
+
+/* Texto Secundario Cursivo */
+.birthday-subtitle {
+    font-family: 'Dancing Script', cursive;
+    color: #333;
+    font-size: 2.2rem;
+    margin: 0.2rem 0;
+}
+
+/* Decoración final */
+.footer-love {
+    font-size: 1rem;
+    color: #be185d;
+    opacity: 0.7;
+    margin-top: 1rem;
+}
+
+/* =========================================
+   ANIMACIONES (Solo para el pastel y corazones)
+   ========================================= */
+
+/* Rebote suave del pastel */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.05); }
+}
+
+/* Caída de Corazones (Definida en JS) */
+.heart {
+    position: absolute;
+    color: white; /* Corazones blancos flotantes */
+    opacity: 0.6;
+    font-size: 24px;
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    from { transform: translateY(-10vh) rotate(0deg); opacity: 0.6; }
+    to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+}
+
